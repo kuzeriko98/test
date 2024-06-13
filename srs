@@ -1,0 +1,197 @@
+ 
+3. Functional Requirements
+Fonksiyonel Gereksinimler
+ 
+3.1 User Registration and Login
+ 
+Requirement ID: FR-1
+Description: The system must allow users to register with their email address and password.
+Criticality: High
+Dependencies: None
+ 
+Requirement ID: FR-2
+Description: The system must allow users to log in using their registered email and password.
+Criticality: High
+Dependencies: None
+ 
+3.2 Car Listings
+ 
+Requirement ID: FR-3
+Description: The system must display a list of available cars.
+Criticality: High
+Dependencies: User must be logged in (FR-2)
+ 
+Requirement ID: FR-4
+Description: The system must display detailed information for each car, including make, model, year, features, and rental price.
+Criticality: High
+Dependencies: FR-3
+ 
+ 
+ 
+ 
+ 
+3.3 Booking System
+ 
+Requirement ID: FR-5
+Description: The system must allow users to book cars that they desire.
+Criticality: High
+Dependencies: FR-3, FR-4
+ 
+Requirement ID: FR-6
+Description: The system must prevent double bookings for the same car.
+Criticality: High
+Dependencies: FR-5
+ 
+3.4 User Account Management
+ 
+Requirement ID: FR-7
+Description: The system must allow users to view and edit their profile information.
+Criticality: Medium
+Dependencies: FR-1, FR-2, FR-5
+ 
+Requirement ID: FR-8
+Description: The system must allow users to view their booking history.
+Criticality: Medium
+Dependencies: FR-1, FR-2, FR-5
+ 
+3.5 Admin Functions
+ 
+Requirement ID: FR-9
+Description: The system must allow admins to add, edit, and delete car listings.
+Criticality: High
+Dependencies: None
+ 
+ 
+Requirement ID: FR-10
+Description: The system must allow admins to view and manage bookings.
+Criticality: High
+Dependencies: FR-9
+ 
+Requirement ID: FR-11
+Description: The system must allow admins to view and manage user accounts.
+Criticality: High
+Dependencies: None
+ 
+3.6 Security Requirements
+ 
+Requirement ID: FR-12
+Description: The system shall ensure secure handling and storage of user data, including personal information.
+Criticality: High
+Dependencies: None
+ 
+3.7 Maintainability Requirements
+ 
+Requirement ID: FR-13
+Description: The system must be designed with modular components to facilitate easy updates and maintenance.
+Criticality: Medium
+Dependencies: None
+ 
+ 
+3.8 Performance Requirements
+ 
+Requirement ID: HR-1
+Description: The server hosting the Online Car Rental system shall have a minimum of 8 CPU cores.
+Criticality: High
+ 
+Requirement ID: HR-2
+Description: The server shall have a minimum of 16 GB RAM.
+Criticality: High
+ 
+Requirement ID: HR-3
+Description: The server shall have a Solid State Drive (SSD) with a minimum of 256 GB storage capacity.
+Criticality: High
+ 
+Requirement ID: HR-4
+Description: The server shall have a gigabit Ethernet interface for high-speed network connectivity.
+Criticality: High
+ 
+Requirement ID: HR-5
+Description: Client devices (e.g., laptops, desktops, tablets, smartphones) shall have a minimum of 4 GB RAM.
+Criticality: Medium
+ 
+Requirement ID: HR-6
+Description: Client devices shall have a modern web browser installed (e.g., Chrome, Firefox, Safari) for accessing the web-based system.
+Criticality: Medium
+ 
+Requirement ID: HR-7
+Description: The network infrastructure shall support a minimum bandwidth of 10 Mbps for stable and high-speed data transmission.
+Criticality: High
+ 
+Requirement ID: HR-8
+Description: The network shall have low latency, with a maximum latency of 50 ms for accessing the system from client devices.
+Criticality: High
+ 
+ 
+4. Interface Requirements 
+     ​​Arayüz Gereksinimleri
+ 
+4.1 User Interfaces
+     Kullanıcı Arayüzleri
+ 
+The user interfaces of the Online Car Rental system shall be intuitive, user-friendly, and accessible via standard web browsers on desktop and mobile devices. Key features of the user interface include:
+ 
+User Registration and Login: Provide forms for new users to register and existing users to log in securely.
+Vehicle Search and Selection: Offer search filters and browsing options for users to find and select available vehicles based on their preferences.
+Reservation Management: Enable users to view, create, modify, and cancel reservations through a simple and straightforward interface.
+User Dashboard: Provide a personalized dashboard where users can view their reservation history, account details, and any notifications.
+ 
+4.1 Hardware Interfaces
+     Donanım Arayüzleri
+ 
+The Online Car Rental system shall interact with the following hardware components:
+ 
+Server: The system will be hosted on a dedicated server with sufficient computing resources to handle user requests and data processing.
+Client Devices: Users will access the system using various client devices, including laptops, desktops, tablets, and smartphones.
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+5. Non-Functional Requirements
+Fonksiyonel Olmayan Gereksinimler
+ 
+5.1 Security
+ 
+The Online Car Rental system shall prioritize data security and user privacy by implementing the following security measures:
+ 
+Encryption: All sensitive data, including user credentials and personal details, shall be encrypted during transmission and storage.
+Access Control: Role-based access control (RBAC) shall be enforced to restrict unauthorized access to system functionalities and data.
+Security Auditing: The system shall maintain logs of user activities and security events for auditing and monitoring purposes.
+Vulnerability Management: Regular security assessments and updates shall be conducted to identify and mitigate potential vulnerabilities.
+ 
+5.2 Binary Compatibility
+ 
+The system shall ensure binary compatibility across different hardware architectures and operating systems to maximize usability and accessibility for users with diverse computing environments.
+ 
+5.3 Reliability
+ 
+The Online Car Rental system shall exhibit high reliability to minimize downtime and ensure continuous availability for users. Key reliability measures include:
+ 
+Fault Tolerance: The system shall gracefully handle errors, failures, and exceptions without compromising overall functionality.
+Redundancy: Critical system components shall be redundantly deployed to mitigate the impact of hardware or software failures.
+Automated Recovery: Automated recovery mechanisms shall be in place to restore system functionality in the event of failures or disruptions.
+ 
+ 
+5.4 Maintainability
+ 
+The system shall be designed and implemented with maintainability in mind to facilitate ease of maintenance, updates, and enhancements. Maintainability attributes include:
+ 
+Modularity: The system shall be modularized to allow for independent development, testing, and maintenance of components.
+Documentation: Comprehensive documentation shall be provided to aid in understanding, troubleshooting, and extending the system.
+Code Quality: Best practices and coding standards shall be followed to ensure clean, well-structured, and maintainable codebase.
+ 
+5.5 Portability
+ 
+The Online Car Rental system shall be portable across different platforms, browsers, and devices to accommodate diverse user preferences and technological environments.
+ 
+5.6 Extensibility
+ 
+The system shall be designed to support easy extension and integration of new features, modules, and third-party services to adapt to evolving user needs and business requirements.
+ 
+5.7 Reusability
+ 
+Reusable components, libraries, and modules shall be leveraged to promote code reuse, reduce development effort, and improve overall system efficiency.
+ 
+ 
