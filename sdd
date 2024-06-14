@@ -1,0 +1,306 @@
+‘Rent A Car’ WebApp
+
+Software Design Document (SDD)
+
+
+Version 1.0
+
+
+June 14, 2024
+
+
+Muzaffer Berkay SENOL
+Petty Officer Second Class / OR-6
+
+
+
+
+
+
+
+
+
+
+
+
+1.	Introduction
+Giriş
+
+1.1 Purpose
+      Amaç
+
+The purpose of Software Design Document (SDD) is to describe the architecture and design of the "Rent A Car" website. This document details the system components, their interactions, and the design choices made to meet the functional and non-functional requirements.
+
+1.2 Scope
+      Kapsam
+
+SDD document covers the architectural design, data design, interface design, and procedural design of the "Rent A Car" website. It serves as a guide for developers and stakeholders to understand the system's structure and behavior.
+
+1.3 References
+      Referanslar
+
+•	Software Requirements Specification (SRS)
+
+
+2.	System Overview
+Sisteme Genel Bakış
+
+The website is designed to provide a user-friendly platform for users to browse, search, and rent cars online. The system includes functionalities for user registration and login, car listings, search and filters, booking and administrative management.
+
+
+
+
+
+3.	Architectural Design
+Mimari Tasarım
+
+3.1 System Architecture
+      Sistem Mimarisi
+
+The system follows a three-tier architecture consisting of the presentation layer, the application layer, and the data layer.
+
+3.1.1 Presentation Layer
+         Sunum Katmanı
+
+•	Technology: HTML, CSS, C#, Angular
+•	Components: User interfaces for browsing, searching, booking, and administrative tasks.
+
+3.1.2 Application Layer
+         Uygulama Katmanı
+
+•	Technology: Node.js, ASP.NET Core
+•	Components:
+o	Authentication Service: Manages user registration and login management.
+o	Car Management Service: Handles car listings, details, and availability.
+o	Booking Service: Manages car bookings, schedule conflicts and booking history.
+o	Admin Service: Provides administrative functionalities for managing cars, users, and bookings.
+
+3.1.3 Data Layer
+         Veri Katmanı
+
+•	Technology: MSSQL
+•	Components:
+o	User Database: Stores user information and credentials.
+o	Car Database: Stores car details and availability status.
+o	Booking Database: Stores booking records and history.
+
+3.2 Deployment Diagram
+      Sistem Diyagramı
+ 
+
+4.	Data Design
+Veri Tasarımı
+
+4.1 Data Models
+      Veri Modelleri
+
+	This section will show the actual codes of the component designs.
+
+4.1.1 User Model
+         Kullanıcı Modeli
+{
+"userId": "int",
+"name": "string",
+"surame": "string",
+"userName": "string",
+"password": "string"
+}
+4.1.2 Car Model
+         Araba Modeli
+{
+  "carId": "int",
+  "model": "string",
+  "type": “string",
+  "pricePerDay": "number"
+}
+
+4.1.3 Booking Model
+         Kiralama Modeli
+{
+  "bookingId": "int",
+  "userId": "string",
+  "carId": "string",
+  "pickupDate": "date",
+  "dropoffDate": "date",
+  "status": "string"
+}
+
+5.	Interface Design
+Arayüz Tasarımı
+
+5.1 User Interface
+      Kullanıcı Arayüzü
+
+5.1.1 Homepage
+         Anasayfa
+
+•	Components: Filter and Search bar, login/register buttons, navigation bar.
+•	Description: The homepage allows users to quickly filter, search for available cars and navigate to other sections of the website.
+5.1.2 Car Listings Page
+         Araba Listeleme Sayfası
+
+•	Components: Filters (brand, car type, price range, pickup and dropoff dates), car cards with summary information, navigation bar.
+•	Description: Displays a list of available cars based on user search criteria.
+
+5.1.3 Car Details Page
+         Araba Detay Sayfası
+
+•	Components: Car images, detailed information, booking form.
+•	Description: Provides comprehensive details about a selected car and allows users to initiate the booking process.
+
+5.1.4 Booking Page
+         Araba Kiralama Sayfası
+
+•	Components: Booking form, date picker, location selector options.
+•	Description: Facilitates the booking process by collecting necessary information from the user.
+
+5.1.5 User Dashboard
+         Kullanıcı Paneli
+
+•	Components: Profile information, booking history, account settings.
+•	Description: Allows users to manage their account and view past bookings.
+
+5.1.6 Admin Dashboard
+         Yönetici Paneli
+
+•	Components: Car management tools, user management tools, booking management tools.
+•	Description: Provides administrators with functionalities to manage the website’s content and users.
+5.2 API Design
+      Programlama Arayüz Tasarımı
+
+5.2.1 Authentication API
+         Kimlik Tanıma Programlama Arayüzü
+
+•	Endpoints:
+o	POST /api/register: Registers a new user.
+o	POST /api/login: Authenticates a user and returns a token.
+
+5.2.2 Car Management API
+         Araba Yönetimi Programlama Arayüzü
+
+•	Endpoints:
+o	GET /api/cars: Retrieves a list of available cars.
+o	GET /api/cars/:carId: Retrieves details of a specific car.
+o	POST /api/cars: Adds a new car (Admin only).
+o	PUT /api/cars/:carId: Updates car details (Admin only).
+o	DELETE /api/cars/:carId: Deletes a car (Admin only).
+
+5.2.3 Booking API
+         Kiralama Programlama Arayüzü
+
+•	Endpoints:
+o	POST /api/bookings: Creates a new booking.
+o	GET /api/bookings: Retrieves a list of bookings (Admin only).
+o	GET /api/bookings/:bookingId: Retrieves details of a specific booking.
+o	PUT /api/bookings/:bookingId: Updates a booking (Admin only).
+o	DELETE /api/bookings/:bookingId: Cancels a booking (Admin only).
+
+
+
+
+
+
+6.	Procedural Design
+Prosedür Tasarımı
+
+
+6.1 Key Algorithms
+      Anahtar Algoritmalar
+
+
+6.1.1 Availability Check
+         Uygunluk Kontrolü
+
+•	Input: Car ID, Pickup Date, Drop-off Date.
+•	Process:
+o	Query the booking database to check for existing bookings for the specified car within the given date range.
+o	If no conflicts are found, mark the car as available.
+
+•	Output: Availability status (available/unavailable).
+
+
+6.1.2 Price Calculation
+         Ücret Hesaplaması
+
+•	Input: Car ID, Rental Duration.
+•	Process:
+o	Retrieve the rental price per day for the specified car.
+o	Multiply the daily rental price by the number of rental days.
+
+•	Output: Total rental price.
+
+
+
+
+
+
+6.2 Use Case Scenarios
+      Kullanım Gereklilikleri Senaryosu
+
+6.2.1 User Registration
+         Kullanıcı Kaydı
+
+•	User Action: User fills in the registration form and submits it.
+•	System Response:
+o	Validate the input data.
+o	Create a new user record in the database.
+o	Send a confirmation email to the user.
+
+
+6.2.2 Car Booking
+         Araba Kiralama
+
+•	User Action: User selects a car, fills in the booking form, and submits it.
+•	System Response:
+o	Check car availability.
+o	Calculate the total rental price.
+o	Create a new booking record in the database.
+ 
+7.	Security Design
+Güvenlik Tasarımı
+
+
+7.1 Authentication and Authorization
+     Kimlik Tanıma ve Yetkilendirme
+
+•	JWT Tokens: Use JSON Web Tokens (JWT) for securing API endpoints and managing user sessions.
+•	Role-Based Access Control (RBAC): Implement RBAC to differentiate between user and admin permissions.
+
+
+
+7.2 Data Protection
+      Veri Koruması
+
+•	Encryption: Encrypt sensitive data (e.g., passwords) using industry-standard algorithms.
+•	Secure Communication: Use HTTPS to ensure secure communication between the client and server.
+
+7.3 Backup and Recovery
+      Yedekleme ve Geri Alma
+
+•	Regular Backups: Schedule regular backups of the database to prevent data loss.
+•	Disaster Recovery Plan: Develop a disaster recovery plan to restore services in case of a system failure.
+
+8.	Performance Design
+Performans Tasarımı
+
+8.1 Scalability
+      Ölçeklenebilirlik
+
+•	Load Balancing: Use load balancing techniques to distribute incoming traffic across multiple servers.
+•	Caching: Implement caching strategies to reduce database load and improve response times.
+
+8.2 Performance Monitoring
+      Performans İzleme
+
+•	Monitoring Tools: Use performance monitoring tools to track system performance and identify problems.
+•	Optimization: Regularly optimize database queries and server configurations based on monitoring insights.
+
+
+
+9.	Conclusion
+Sonuç
+
+This Software Design Document provides a comprehensive overview of the design and architecture of the "Rent A Car" website. By adhering to this design, we can ensure that the website is robust, scalable, and user-friendly, meeting the needs of both the customers and the business.
+
+
+
